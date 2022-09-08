@@ -24,13 +24,18 @@
                 <span asp-validation-for="Discripton" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Rating" class="control-label"></label>
-                <input asp-for="Rating" class="form-control" />
-                <span asp-validation-for="Rating" class="text-danger"></span>
+                <div class="filter-menu">
+        <select asp-for="Rating">   
+            <option value=5>5 stars</option>
+            <option value=4>4 stars & above</option>
+            <option value=3>3 stars & above</option>
+            <option value=2>2 stars & above</option>
+            <option value=1>1 star & above</option>
+        </select>
+    </div>
             </div>
             <div class="form-group">
-                <label asp-for="PhoneId" class="control-label"></label>
-                <select asp-for="PhoneId" class ="form-control" asp-items="ViewBag.PhoneId"></select>
+              <input  asp-for="PhoneId" value="@ViewBag.PhoneId" disabled/>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

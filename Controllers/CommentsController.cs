@@ -45,9 +45,10 @@ namespace LabAspMvc.Controllers
         }
 
         // GET: Comments/Create
-        public IActionResult Create()
+        public IActionResult Create(int Id)
         {
-            ViewData["PhoneId"] = new SelectList(_context.Phones, "Id", "Id");
+            ViewBag.PhoneId = Id;
+
             return View();
         }
 
