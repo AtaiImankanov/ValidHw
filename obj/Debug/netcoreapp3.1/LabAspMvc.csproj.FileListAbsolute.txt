@@ -348,11 +348,6 @@ C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\staticwebassets\LabAspMvc.S
 C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\LabAspMvc.TagHelpers.input.cache
 C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\LabAspMvc.TagHelpers.output.cache
 C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\LabAspMvc.RazorCoreGenerate.cache
-C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Brands\Create.cshtml.g.cs
-C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Brands\Delete.cshtml.g.cs
-C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Brands\Details.cshtml.g.cs
-C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Brands\Edit.cshtml.g.cs
-C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Brands\Index.cshtml.g.cs
 C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Categories\Create.cshtml.g.cs
 C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Categories\Delete.cshtml.g.cs
 C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Categories\Details.cshtml.g.cs
@@ -385,3 +380,8 @@ C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Delete
 C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Details.cshtml.g.cs
 C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Edit.cshtml.g.cs
 C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Index.cshtml.g.cs
+C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Brands\Create.cshtml.g.cs
+C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Brands\Delete.cshtml.g.cs
+C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Brands\Details.cshtml.g.cs
+C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Brands\Edit.cshtml.g.cs
+C:\Users\imank\Desktop\Valid\obj\Debug\netcoreapp3.1\Razor\Views\Brands\Index.cshtml.g.cs

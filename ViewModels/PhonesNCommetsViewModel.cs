@@ -6,6 +6,6 @@ namespace LabAspMvc.ViewModels
     public class PhonesNCommetsViewModel
     {
         public Phone Phone { get; set; }
-        public List<Comment> Brands { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

@@ -50,9 +50,41 @@
     </dl>
 </div>
 <div>
-    <a href =""></a>
+    <a asp-action="Create" asp-controller="Comments"  >Add Comment </a>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Phone.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-controller="Phones" asp-route-id="@Model.Phone.Id">Edit</a> |
+    <a asp-action="Index" asp-controller="Phones">Back to List</a>
 </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                 Comment Name
+            </th>
+            <th>
+                 Comment  Discripton
+            </th>
+            <th>
+                Comments Rating
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Comments) {
+    @if(@Model.Phone.Id==item.PhoneId){
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discripton)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+        </tr>
+}}
+    </tbody>
+</table>

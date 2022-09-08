@@ -21,7 +21,8 @@ namespace LabAspMvc.Controllers
         // GET: Comments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Comment.ToListAsync());
+            var mobileContext = _context.Comment.Include(c => c.Phone);
+            return View(await mobileContext.ToListAsync());
         }
 
         // GET: Comments/Details/5
@@ -33,6 +34,7 @@ namespace LabAspMvc.Controllers
             }
 
             var comment = await _context.Comment
+                .Include(c => c.Phone)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (comment == null)
             {
@@ -45,6 +47,7 @@ namespace LabAspMvc.Controllers
         // GET: Comments/Create
         public IActionResult Create()
         {
+            ViewData["PhoneId"] = new SelectList(_context.Phones, "Id", "Id");
             return View();
         }
 
@@ -53,14 +56,15 @@ namespace LabAspMvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Discripton,Rating")] Comment comment)
+        public async Task<IActionResult> Create([Bind("Id,Name,Discripton,Rating,PhoneId")] Comment comment)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(comment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Redirect("https://localhost:44394/Phones/Details/" + comment.PhoneId);
             }
+            ViewData["PhoneId"] = new SelectList(_context.Phones, "Id", "Id", comment.PhoneId);
             return View(comment);
         }
 
@@ -77,6 +81,7 @@ namespace LabAspMvc.Controllers
             {
                 return NotFound();
             }
+            ViewData["PhoneId"] = new SelectList(_context.Phones, "Id", "Id", comment.PhoneId);
             return View(comment);
         }
 
@@ -85,7 +90,7 @@ namespace LabAspMvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Discripton,Rating")] Comment comment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Discripton,Rating,PhoneId")] Comment comment)
         {
             if (id != comment.Id)
             {
@@ -112,6 +117,7 @@ namespace LabAspMvc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["PhoneId"] = new SelectList(_context.Phones, "Id", "Id", comment.PhoneId);
             return View(comment);
         }
 
@@ -124,6 +130,7 @@ namespace LabAspMvc.Controllers
             }
 
             var comment = await _context.Comment
+                .Include(c => c.Phone)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (comment == null)
             {

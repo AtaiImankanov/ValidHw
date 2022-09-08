@@ -1,8 +1,11 @@
-﻿using LabAspMvc.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using LabAspMvc.Models;
 
 namespace LabAspMvc.Controllers
 {
@@ -50,19 +53,13 @@ namespace LabAspMvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Brand brand)
+        public async Task<IActionResult> Create([Bind("Id,Name,Email,DateFounded")] Brand brand)
         {
-
             if (ModelState.IsValid)
             {
-                if (_context.Brands.Any(b => b.Name == brand.Name))
-                {
-                    return Redirect("https://localhost:44394/Brands/Create");
-                }
                 _context.Add(brand);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-
             }
             return View(brand);
         }
@@ -88,7 +85,7 @@ namespace LabAspMvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Brand brand)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Email,DateFounded")] Brand brand)
         {
             if (id != brand.Id)
             {
@@ -150,6 +147,25 @@ namespace LabAspMvc.Controllers
         private bool BrandExists(int id)
         {
             return _context.Brands.Any(e => e.Id == id);
+        }
+        public bool ValidDate(DateTime dt)
+        {
+            if(dt.Year< DateTime.Now.Year-100 && dt > DateTime.Now)
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool ValidBrand(string name)
+        {
+            foreach(var brand in _context.Brands)
+            {
+                if(brand.Name == name)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

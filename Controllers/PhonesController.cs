@@ -26,23 +26,23 @@ namespace LabAspMvc.Controllers
         }
 
         // GET: Phones/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id,PhonesNCommetsViewModel model)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var phone = await _context.Phones
+            model.Comments = _context.Comment.ToList();
+            model.Phone = await _context.Phones
                 .Include(p => p.Brand)
                 .Include(p => p.Categories)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (phone == null)
+            if (model.Phone == null)
             {
                 return NotFound();
             }
 
-            return View(phone);
+            return View(model);
         }
 
         // GET: Phones/Create
@@ -151,6 +151,17 @@ namespace LabAspMvc.Controllers
         private bool PhoneExists(int id)
         {
             return _context.Phones.Any(e => e.Id == id);
+        }
+        public bool ValidPhone(string Name)
+        {
+            foreach (var phone in _context.Phones)
+            {
+                if (phone.Name == Name)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
