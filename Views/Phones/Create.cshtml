@@ -1,0 +1,67 @@
+﻿@model LabAspMvc.ViewModels.PhonesNCategoriesNBrandsViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Phone</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.Phone.Name" class="control-label"></label>
+                <input asp-for="@Model.Phone.Name" class="form-control" />
+                <span asp-validation-for="@Model.Phone.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Phone.Pic" class="control-label"></label>
+                <input asp-for="@Model.Phone.Pic" class="form-control" />
+                <span asp-validation-for="@Model.Phone.Pic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Phone.Description" class="control-label"></label>
+                <input asp-for="@Model.Phone.Description" class="form-control" />
+                <span asp-validation-for="@Model.Phone.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Phone.Price" class="control-label"></label>
+                <input asp-for="@Model.Phone.Price" class="form-control" />
+                <span asp-validation-for="@Model.Phone.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Phone.CategoryId" class="control-label"></label>
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example " asp-for="@Model.Phone.CategoryId">
+                @foreach(var cat in @Model.Categories)
+                {
+                    <option value="@cat.Id">@cat.Name</option>
+                }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Phone.BrandId" class="control-label"></label>
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example " asp-for="@Model.Phone.BrandId">
+                @foreach(var brand in @Model.Brands)
+                {
+                    <option value="@brand.Id">@brand.Name</option>
+                }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

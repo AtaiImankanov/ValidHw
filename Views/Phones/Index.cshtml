@@ -1,0 +1,34 @@
+﻿@model IEnumerable<LabAspMvc.Models.Phone>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+    
+@foreach (var item in Model) {
+    <div class="card" style="width: 18rem;">
+  <img src="@item.Pic" class="card-img-top" alt="image">
+  <div class="card-body">
+      <ul class="list-group">
+  <li class="list-group-item">Name = @item.Name</li>
+  <li class="list-group-item">Price =@item.Price</li>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Create" asp-controller="Orders" asp-route-PhoneId="@item.Id">make an order</a>
+</ul>
+     
+              
+           
+        
+  </div>
+</div>
+       
+}
+
